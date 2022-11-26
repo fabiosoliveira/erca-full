@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "component/Logout.jsx", "pages/api/auth/[...nextauth].js", "pages/listar/[search].jsx", "pages/imprimir/[id].jsx", "component/Nav.jsx"],
   "exclude": ["node_modules"]
 }
