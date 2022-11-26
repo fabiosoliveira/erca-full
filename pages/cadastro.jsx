@@ -9,10 +9,6 @@ export default function Cadastro() {
 
     if (!aluno.nome) return alert("Campo nome obrigatório");
 
-    // const options = {
-    //     method: 'POST',
-    //     body: new URLSearchParams(aluno)
-    // }
 
     const body = new URLSearchParams(aluno);
 
