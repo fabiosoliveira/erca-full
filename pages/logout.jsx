@@ -2,7 +2,6 @@ import { signOut, useSession } from "next-auth/react";
 
 export default function Logout() {
   const { data: session } = useSession({ required: true });
-  //j
 
   return (
     <div
