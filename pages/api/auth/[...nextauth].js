@@ -23,12 +23,11 @@ export default NextAuth({
           password: process.env.USER_PASSWORD,
         };
 
-        // if (
-        //   user &&
-        //   user.password === credentials.password &&
-        //   user.email === credentials.email
-        // ) {
-        if (user) {
+        if (
+          user &&
+          user.password === credentials.password &&
+          user.email === credentials.email
+        ) {
           // Any object returned will be saved in `user` property of the JWT
           return user;
         } else {
