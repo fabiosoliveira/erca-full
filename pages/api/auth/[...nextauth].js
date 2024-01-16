@@ -1,31 +1,43 @@
 import NextAuth from "next-auth/next";
-import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export default NextAuth({
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
+    CredentialsProvider({
+      // The name to display on the sign in form (e.g. "Sign in with...")
+      name: "Credentials",
+      // `credentials` is used to generate a form on the sign in page.
+      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
+      // e.g. domain, username, password, 2FA token, etc.
+      // You can pass any HTML attribute to the <input> tag through the object.
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "Seu email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials, req) {
+        // Add logic here to look up the user from the credentials supplied
+        const user = {
+          id: "1",
+          name: process.env.USER_NAME,
+          email: process.env.USER_EMAIL,
+          password: process.env.USER_PASSWORD,
+        };
+
+        // if (
+        //   user &&
+        //   user.password === credentials.password &&
+        //   user.email === credentials.email
+        // ) {
+        if (user) {
+          // Any object returned will be saved in `user` property of the JWT
+          return user;
+        } else {
+          // If you return null then an error will be displayed advising the user to check their details.
+          return null;
+
+          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+        }
       },
     }),
   ],
-  secret: process.env.JWT_SECRET,
-  callbacks: {
-    async signIn({ account, profile }) {
-      if (account.provider === "google") {
-        // return profile.email_verified && profile.email.endsWith("@example.com")
-        return (
-          profile.email_verified &&
-          profile.email === process.env.EMAIL_PERMITIDO
-        );
-      }
-      return true; // Do different verification for other providers that don't have `email_verified`
-    },
-  },
 });

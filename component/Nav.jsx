@@ -68,18 +68,12 @@ export default function Nav() {
               Buscar
             </Link>
           </form>
-          <img
-          src={user?.image}
-          alt=""
-          onClick={() => router.push("/logout")}
-          style={{
-            height: "40px",
-            width: "40px",
-            borderRadius: "50%",
-            marginRight: "10px",
-            marginLeft: "20px",
-          }}
-        />
+          <Link
+              className="btn btn-danger mx-2 my-2 my-sm-0"
+              href={`/logout`}
+            >
+              Sair
+            </Link>
         </div>
       </nav>
   );
