@@ -2,7 +2,7 @@ import styles from "../../styles/Imprimir.module.css";
 import React, { useCallback, useEffect, useState } from "react";
 
 import jorje from "../../img/jorje_amado.png";
-import pmj from "../../img/pmj.png";
+import pmj from "../../img/erca_header.jpg";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -40,25 +40,23 @@ export default function Lista() {
   function header() {
     return (
       <div>
-        <div className="d-flex justify-content-between">
-          <div>
-            <Image src={jorje} alt="" />
-            {/* <img src={jorje} alt="" /> */}
-          </div>
-          <div className="text-center">
-            <p className="mb-0">SECRETARIA MUNICIPAL DA EDUCAÇÃO</p>
-            <p className="mb-0">ESCOLA MUNICIPALIZADA REUNIDAS CASTRO ALVES</p>
-            <p className="mb-0">
-              Avenida Presidente Vargas, 83 - centro - Jiquiriçá-Ba
-            </p>
-            <p className="mb-0">Email: erca2018@outlook.pt</p>
-          </div>
-          <div>
-            <Image src={pmj} alt="" />
-            {/* <img src={pmj} alt="" /> */}
-          </div>
+        <div className="text-center">
+          <Image
+            className="opacity-50"
+            src={pmj}
+            alt=""
+            height={200}
+            width={800}
+            style={{ opacity: 0.6 }}
+          />
+          <h5 style={{ fontStyle: "italic" }}>
+            ESCOLA MUNICIPAL REUNIDAS CASTRO ALVES
+          </h5>
+          <h6 style={{ fontStyle: "italic" }}>
+            e-mail: erca2018@outlook.pt - Contato: 75 988040742
+          </h6>
         </div>
-        <h1 className={"text-center mt-5 "+ styles.h1 }>
+        <h1 className={"text-center mt-5 " + styles.h1}>
           FICHA DE MATRICULA - {new Date().getFullYear()}
         </h1>
       </div>
@@ -145,7 +143,7 @@ export default function Lista() {
     <div className="container">
       {header()}
       {/* <div className="media imprimir"> */}
-      <div className={"media "+styles.imprimir}>
+      <div className={"media " + styles.imprimir}>
         {/* <img
           className="align-self-start mr-3"
           src={`/fotos/${params.id}.jpg`}
@@ -159,7 +157,7 @@ export default function Lista() {
           alt="Foto"
         /> */}
         <div className="media-body">
-          <h3 className={"mt-0 "+styles.h3}>Dados do aluno</h3>
+          <h3 className={"mt-0 " + styles.h3}>Dados do aluno</h3>
           <div className="container">
             <div className={styles.row}>
               <div className="col-md-6">
